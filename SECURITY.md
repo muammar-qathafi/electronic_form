@@ -1,157 +1,45 @@
-# Security Policy
+﻿# Security Notes
 
-## Supported Versions
+This is a portfolio project, so keep that in mind. Some things are intentionally simplified.
 
-We release patches for security vulnerabilities for the following versions:
+## Found a Security Issue?
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.0.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+Email me or open an issue. Don't post vulnerabilities publicly - give me a chance to fix it first.
 
-## Reporting a Vulnerability
+## Things to Know
 
-We take the security of our project seriously. If you believe you have found a security vulnerability, please report it to us as described below.
+**This is a demo project**, so:
 
-### Where to Report
+- Uses in-memory storage (obviously not for production)
+- JWT in localStorage (works for demo, but vulnerable to XSS)  
+- No rate limiting (add this for real deployment)
+- File upload is simulated (real version needs validation + virus scanning)
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+## If You Fork This
 
-Instead, please report them via email to: [your.email@example.com](mailto:your.email@example.com)
+For actual production use:
 
-### What to Include
+```bash
+npm audit      # Check dependencies
+```
 
-When reporting a vulnerability, please include:
+Replace in-memory storage with PostgreSQL/MongoDB. Add proper environment variables. Use HTTPS.
 
-- Type of vulnerability
-- Full paths of source file(s) related to the vulnerability
-- Location of the affected source code (tag/branch/commit or direct URL)
-- Step-by-step instructions to reproduce the issue
-- Proof-of-concept or exploit code (if possible)
-- Impact of the issue, including how an attacker might exploit it
+The auth system (JWT + bcrypt) is production-ready though.
 
-### Response Timeline
+## Best Practices I Followed
 
-- We will acknowledge receipt of your vulnerability report within 48 hours
-- We will provide a detailed response within 7 days
-- We will keep you informed about the progress of fixing the issue
-- We will notify you when the vulnerability is fixed
+- Passwords hashed with bcrypt
+- JWT with expiration
+- Input validation
+- No credentials in code
+- .env.example instead of .env
 
-## Security Best Practices
+## Dependencies
 
-### For Developers
+Run 
+pm audit occasionally. I'm using stable versions but security updates happen.
 
-1. **Authentication**
-   - Never commit credentials or API keys
-   - Use strong, unique passwords
-   - Implement proper JWT token expiration
-   - Use bcrypt for password hashing
+---
 
-2. **Input Validation**
-   - Validate all user inputs
-   - Sanitize data before storing
-   - Use parameterized queries
-   - Implement rate limiting
-
-3. **Dependencies**
-   - Keep dependencies up to date
-   - Run `npm audit` regularly
-   - Review dependency changes before updating
-
-4. **Environment Variables**
-   - Never commit `.env` files
-   - Use strong, random secrets in production
-   - Rotate secrets regularly
-
-### For Users
-
-1. **Password Security**
-   - Use strong, unique passwords
-   - Enable two-factor authentication when available
-   - Don't share your credentials
-
-2. **Session Management**
-   - Logout when finished
-   - Don't use public computers for sensitive operations
-   - Clear browser cache regularly
-
-3. **Updates**
-   - Keep your installation up to date
-   - Review security advisories
-   - Apply patches promptly
-
-## Known Security Considerations
-
-This is a demonstration/portfolio project. Please note:
-
-1. **In-Memory Storage**: The current implementation uses in-memory storage, which is not secure for production use. Implement a proper database with encryption.
-
-2. **JWT Storage**: Tokens are stored in localStorage, which is vulnerable to XSS attacks. For production, consider:
-   - Using httpOnly cookies
-   - Implementing refresh tokens
-   - Using a more secure storage mechanism
-
-3. **File Uploads**: File upload functionality needs additional security:
-   - Virus scanning
-   - File type validation
-   - Size limits
-   - Sanitization
-
-4. **K-Link Integration**: The K-Link service is simulated. Real implementation should:
-   - Use HTTPS
-   - Validate SSL certificates
-   - Implement proper authentication
-   - Handle sensitive data securely
-
-## Security Checklist for Production
-
-Before deploying to production:
-
-- [ ] Use HTTPS/TLS everywhere
-- [ ] Implement rate limiting
-- [ ] Set up CORS properly
-- [ ] Use helmet.js for security headers
-- [ ] Implement input validation and sanitization
-- [ ] Set up proper logging and monitoring
-- [ ] Use environment variables for secrets
-- [ ] Implement database encryption
-- [ ] Set up regular backups
-- [ ] Configure firewall rules
-- [ ] Implement session timeout
-- [ ] Add CSRF protection
-- [ ] Set up security scanning (Snyk, etc.)
-- [ ] Implement SQL injection protection
-- [ ] Add XSS protection
-- [ ] Set up DDoS protection
-- [ ] Implement proper error handling (don't expose stack traces)
-- [ ] Regular security audits
-- [ ] Dependency updates and audits
-
-## Compliance
-
-This project does not currently comply with specific regulations (GDPR, HIPAA, etc.). If you need compliance:
-
-- Implement data encryption at rest and in transit
-- Add audit logging
-- Implement data retention policies
-- Add user consent mechanisms
-- Implement right to deletion
-- Add privacy policy
-- Implement data export functionality
-
-## Third-Party Dependencies
-
-We use several third-party packages. Security of these packages is the responsibility of their maintainers. We:
-
-- Regularly update dependencies
-- Run security audits
-- Monitor for vulnerabilities
-- Use trusted packages with active maintenance
-
-## Contact
-
-For security concerns, contact:
-- Email: [your.email@example.com](mailto:your.email@example.com)
-- Security Policy: This document
-
-Thank you for helping keep our project secure!
+This is meant as a talking point for interviews, not a production-ready secure system. Use common sense if deploying it.

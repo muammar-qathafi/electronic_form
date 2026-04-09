@@ -47,7 +47,7 @@ git init
 git add .
 
 # Commit pertama
-git commit -m "Initial commit: Electronic Form K-Link System"
+git commit -m "Initial commit: Electronic Form System"
 
 # Tambahkan remote repository
 git remote add origin https://github.com/muammar-qathafi/electronic_form.git
@@ -73,7 +73,7 @@ git push -u origin main
    - Jika muncul "This directory does not appear to be a Git repository", klik "create a repository"
 
 4. **Commit Changes**
-   - Tulis commit message: "Initial commit: Electronic Form K-Link System"
+   - Tulis commit message: "Initial commit: Electronic Form System"
    - Klik "Commit to main"
 
 5. **Publish Repository**
@@ -100,14 +100,14 @@ Sebelum upload, edit file-file berikut:
 Ganti:
 - `Your Name` → `Muammar Qathafi`
 - `@yourusername` → `@muammar-qathafi`
-- `https://github.com/yourusername/e-form-k-link` → `https://github.com/muammar-qathafi/electronic_form`
+- `https://github.com/yourusername/electronic-form` → `https://github.com/muammar-qathafi/electronic_form`
 - Update email dan link portfolio Anda
 
 ### 2. package.json
 Ganti:
 ```json
 {
-  "name": "e-form-k-link",
+  "name": "electronic-form",
   "author": "Muammar Qathafi",
   "repository": {
     "type": "git",

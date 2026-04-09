@@ -1,6 +1,6 @@
 # API Documentation
 
-This document provides detailed information about the E-Form K-Link API endpoints.
+This document provides detailed information about the E-Form API endpoints.
 
 ## Base URL
 
@@ -370,12 +370,12 @@ POST /api/forms/validate
 
 ---
 
-### K-Link Documents
+### Cloud Documents
 
 #### Upload Document
 
 ```http
-POST /api/klink/documents/upload
+POST /api/clouddocs/documents/upload
 ```
 
 **Headers:**
@@ -399,7 +399,7 @@ Authorization: Bearer {token}
   "success": true,
   "data": {
     "id": "uuid",
-    "klinkId": "string",
+    "cloudDocsId": "string",
     "title": "string",
     "description": "string",
     "content": "string",
@@ -414,7 +414,7 @@ Authorization: Bearer {token}
 #### Get User Documents
 
 ```http
-GET /api/klink/documents
+GET /api/clouddocs/documents
 ```
 
 **Headers:**
@@ -429,7 +429,7 @@ Authorization: Bearer {token}
 #### Get Document by ID
 
 ```http
-GET /api/klink/documents/:id
+GET /api/clouddocs/documents/:id
 ```
 
 **Headers:**
@@ -440,7 +440,7 @@ Authorization: Bearer {token}
 #### Delete Document
 
 ```http
-DELETE /api/klink/documents/:id
+DELETE /api/clouddocs/documents/:id
 ```
 
 **Headers:**
@@ -451,7 +451,7 @@ Authorization: Bearer {token}
 #### Share Document
 
 ```http
-POST /api/klink/documents/:id/share
+POST /api/clouddocs/documents/:id/share
 ```
 
 **Headers:**
@@ -469,7 +469,7 @@ Authorization: Bearer {token}
 #### Get Shared Users
 
 ```http
-GET /api/klink/documents/:id/shared-with
+GET /api/clouddocs/documents/:id/shared-with
 ```
 
 **Headers:**
@@ -480,7 +480,7 @@ Authorization: Bearer {token}
 #### Search Documents
 
 ```http
-GET /api/klink/search?query=searchterm
+GET /api/clouddocs/search?query=searchterm
 ```
 
 **Headers:**
@@ -590,6 +590,6 @@ const templates = result.data;
 
 - This API uses in-memory storage for demonstration purposes
 - For production use, implement a real database (PostgreSQL, MongoDB, etc.)
-- The K-Link integration is simulated and should be replaced with actual API calls
+- The cloud storage integration is simulated and should be replaced with actual API calls
 - Always use HTTPS in production environments
 - Store JWT tokens securely (not in localStorage for sensitive applications)

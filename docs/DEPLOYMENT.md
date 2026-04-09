@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This guide will help you deploy the E-Form K-Link application to various hosting platforms.
+This guide will help you deploy the E-Form application to various hosting platforms.
 
 ## Table of Contents
 
@@ -46,9 +46,9 @@ Before deploying, ensure you have:
    DB_USER=your-db-user
    DB_PASS=your-db-password
    
-   # K-Link API (if available)
-   KLINK_API_URL=https://api.k-link.com
-   KLINK_API_KEY=your-klink-api-key
+   # Cloud Storage API (if available)
+   CLOUD_STORAGE_API_URL=https://api.example.com
+   CLOUD_STORAGE_API_KEY=your-api-key
    
    # CORS
    ALLOWED_ORIGINS=https://yourdomain.com
@@ -95,7 +95,7 @@ Before deploying, ensure you have:
    
    CREATE TABLE documents (
      id UUID PRIMARY KEY,
-     klink_id VARCHAR(100),
+     cloud_docs_id VARCHAR(100),
      title VARCHAR(200) NOT NULL,
      description TEXT,
      content TEXT,
@@ -222,7 +222,7 @@ Before deploying, ensure you have:
 
 8. **Start with PM2**
    ```bash
-   pm2 start src/server.js --name eform-klink
+   pm2 start src/server.js --name eform-app
    pm2 startup
    pm2 save
    ```
@@ -232,7 +232,7 @@ Before deploying, ensure you have:
    sudo apt-get install nginx
    
    # Create Nginx config
-   sudo nano /etc/nginx/sites-available/eform-klink
+   sudo nano /etc/nginx/sites-available/eform-app
    ```
 
    ```nginx
@@ -252,7 +252,7 @@ Before deploying, ensure you have:
    ```
 
    ```bash
-   sudo ln -s /etc/nginx/sites-available/eform-klink /etc/nginx/sites-enabled/
+   sudo ln -s /etc/nginx/sites-available/eform-app /etc/nginx/sites-enabled/
    sudo nginx -t
    sudo systemctl restart nginx
    ```
@@ -314,17 +314,17 @@ Before deploying, ensure you have:
 
 5. **Create web app**
    ```bash
-   az webapp create --resource-group eform-rg --plan eform-plan --name eform-klink --runtime "NODE|18-lts"
+   az webapp create --resource-group eform-rg --plan eform-plan --name eform-app --runtime "NODE|18-lts"
    ```
 
 6. **Configure deployment**
    ```bash
-   az webapp deployment source config-local-git --name eform-klink --resource-group eform-rg
+   az webapp deployment source config-local-git --name eform-app --resource-group eform-rg
    ```
 
 7. **Set environment variables**
    ```bash
-   az webapp config appsettings set --resource-group eform-rg --name eform-klink --settings NODE_ENV=production JWT_SECRET=your-secret
+   az webapp config appsettings set --resource-group eform-rg --name eform-app --settings NODE_ENV=production JWT_SECRET=your-secret
    ```
 
 ### Self-Hosted (VPS)
