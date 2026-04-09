@@ -1,0 +1,24 @@
+# Uploads Directory
+
+This directory is used for storing uploaded files.
+
+## Important
+
+- Files in this directory are gitignored (except this README)
+- Ensure proper file permissions in production
+- Implement file size limits and validation
+- Consider using cloud storage (AWS S3, Google Cloud Storage) for production
+
+## Security
+
+- Never store sensitive files without encryption
+- Implement virus scanning for uploaded files
+- Validate file types before saving
+- Use unique filenames to prevent conflicts
+
+## Cleanup
+
+Implement automated cleanup for:
+- Temporary files
+- Orphaned uploads
+- Files from deleted records

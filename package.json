@@ -1,0 +1,43 @@
+{
+  "name": "e-form-k-link",
+  "version": "1.0.0",
+  "description": "Electronic Form Management System with K-Link Integration - A modern web application for managing digital forms and workflows",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "jest",
+    "lint": "eslint src/**/*.js"
+  },
+  "keywords": [
+    "e-form",
+    "form-management",
+    "k-link",
+    "workflow",
+    "document-management"
+  ],
+  "author": "Muammar Qathafi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/muammar-qathafi/electronic_form.git"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "body-parser": "^1.20.2",
+    "multer": "^1.4.5-lts.1",
+    "uuid": "^9.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "jest": "^29.7.0",
+    "eslint": "^8.50.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

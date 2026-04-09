@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Form K-Link - Electronic Form Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-file-alt"></i>
+                <span>E-Form K-Link</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#templates">Templates</a></li>
+                <li><a href="#submissions">My Submissions</a></li>
+                <li><a href="#documents">Documents</a></li>
+                <li id="authSection">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#register" class="btn-register">Register</a>
+                </li>
+                <li id="userSection" style="display: none;">
+                    <span class="user-name"></span>
+                    <a href="#logout" class="btn-logout">Logout</a>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Electronic Form Management System</h1>
+                    <p>Streamline your workflow with digital forms and K-Link integration</p>
+                    <div class="hero-buttons">
+                        <a href="#templates" class="btn btn-primary">
+                            <i class="fas fa-file-alt"></i> Browse Templates
+                        </a>
+                        <a href="#about" class="btn btn-secondary">
+                            <i class="fas fa-info-circle"></i> Learn More
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-features">
+                    <div class="feature-card">
+                        <i class="fas fa-edit"></i>
+                        <h3>Easy Form Creation</h3>
+                        <p>Create and fill forms with intuitive interface</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-cloud"></i>
+                        <h3>K-Link Integration</h3>
+                        <p>Seamlessly manage documents with K-Link</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure & Reliable</h3>
+                        <p>Your data is protected with modern security</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Templates Section -->
+        <section id="templates" class="section">
+            <div class="container">
+                <h2>Form Templates</h2>
+                <p class="section-subtitle">Choose from our pre-built templates to get started quickly</p>
+                <div class="templates-grid" id="templatesGrid">
+                    <!-- Templates will be loaded here dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Submissions Section -->
+        <section id="submissions" class="section">
+            <div class="container">
+                <h2>My Submissions</h2>
+                <p class="section-subtitle">View and manage your form submissions</p>
+                <div class="submissions-list" id="submissionsList">
+                    <!-- Submissions will be loaded here dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Documents Section -->
+        <section id="documents" class="section">
+            <div class="container">
+                <h2>K-Link Documents</h2>
+                <p class="section-subtitle">Manage your documents in K-Link cloud storage</p>
+                <div class="documents-actions">
+                    <button class="btn btn-primary" id="uploadDocBtn">
+                        <i class="fas fa-upload"></i> Upload Document
+                    </button>
+                    <input type="search" id="searchDocuments" placeholder="Search documents...">
+                </div>
+                <div class="documents-list" id="documentsList">
+                    <!-- Documents will be loaded here dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Form Submission -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="formModalTitle">Form</h2>
+            <form id="dynamicForm">
+                <!-- Form fields will be generated dynamically -->
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            <p class="modal-footer">Don't have an account? <a href="#register">Register</a></p>
+        </div>
+    </div>
+
+    <!-- Modal for Register -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerUsername">Username</label>
+                    <input type="text" id="registerUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerFullName">Full Name</label>
+                    <input type="text" id="registerFullName">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </form>
+            <p class="modal-footer">Already have an account? <a href="#login">Login</a></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 E-Form K-Link. Open Source Project.</p>
+            <div class="footer-links">
+                <a href="https://github.com/yourusername/e-form-k-link" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
